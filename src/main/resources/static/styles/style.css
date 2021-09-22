@@ -91,7 +91,7 @@ main {
 
 #form input[name="url"] {
   width: 100%;
-  padding: 0.9rem;
+  padding: 1rem;
 
   border: 1px solid #D8D8D8;
   border-radius: 8px;
@@ -103,6 +103,36 @@ main {
 }
 #form input[name="url"]:-ms-input-placeholder {
   color: rgba(96, 96, 96, 0.5);
+}
+
+#result {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  margin-top: 1rem;
+  padding: 1rem;
+
+  border-radius: 8px;
+
+  background-color: #FF8600;
+}
+#result:not(.active) {
+  display: none;
+}
+#shorten-url {
+  color: #ffffff;
+}
+#clipboard {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+#clipboard:not(.copy) .check {
+  display: none;
 }
 
 #recaptcha-description {
