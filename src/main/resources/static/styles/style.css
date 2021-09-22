@@ -89,20 +89,79 @@ main {
   margin-top: 1rem;
 }
 
-#form input[name="url"] {
-  width: 100%;
-  padding: 1rem;
+#input {
+  position: relative;
+  overflow: hidden;
 
   border: 1px solid #D8D8D8;
   border-radius: 8px;
-  outline-color: #606060;
 }
-#form input[name="url"]::placeholder {
+#input.correct {
+  border: 2px solid #FF8600;
+}
+#input.correct input {
+  color: #FF8600;
+  font-weight: 700;
+}
+#input.wrong {
+  border: 2px solid #ff0000;
+}
+
+#input input {
+  width: 100%;
+  padding: 1rem;
+  padding-right: 3rem;
+
+  border: none;
+  outline: none;
+}
+#input input::placeholder {
   color: rgba(96, 96, 96, 0.5);
   opacity: 1;
 }
-#form input[name="url"]:-ms-input-placeholder {
+#input input:-ms-input-placeholder {
   color: rgba(96, 96, 96, 0.5);
+}
+
+#input button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0.5rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+#input:not(.correct) button {
+  display: none;
+}
+@keyframes rotation {
+  25% { transform: rotate(-45deg); }
+  50% {  transform: rotate(0deg); }
+  75% {  transform: rotate(45deg); }
+}
+#input.process img {
+  animation: rotation 1s linear infinite;
+}
+
+#message {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  color: #FF8600;
+  cursor: pointer;
+
+  transition: top ease 500ms;
+}
+#message.show {
+  top: 0;
 }
 
 #result {

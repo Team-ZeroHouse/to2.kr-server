@@ -26,7 +26,14 @@
       반드시 https(s)를 포함한 주소(최대500자)를 입력하세요.
     </p>
     <form id="form" action="#" method="POST">
-      <input type="text" name="url" placeholder="주소를 입력해주세요" />
+      <div id="input">
+        <input type="text" name="url" placeholder="주소를 입력해주세요" />
+        <button type="submit">
+          <img th:src="@{/images/change.svg}" alt="change" />
+        </button>
+        <p id="message">메세지 입니다.</p>
+      </div>
+      
       <input type="hidden" name="recaptcha" />
 
       <div id="result">
