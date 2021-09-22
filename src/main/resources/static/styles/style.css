@@ -158,7 +158,7 @@ main {
   color: #FF8600;
   cursor: pointer;
 
-  transition: top ease 500ms;
+  transition: top 500ms ease;
 }
 #message.show {
   top: 0;
@@ -177,7 +177,7 @@ main {
 
   background-color: #FF8600;
 }
-#result:not(.active) {
+#result:not(.show) {
   display: none;
 }
 #shorten-url {
