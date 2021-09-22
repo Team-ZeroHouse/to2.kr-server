@@ -15,6 +15,7 @@
 	
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
+		"editorconfig.editorconfig",
 		"vscjava.vscode-java-pack",
 		"gabrielbb.vscode-lombok"
 	],
