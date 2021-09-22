@@ -2,18 +2,10 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.194.0/containers/java
 {
 	"name": "to2-server",
-	
-	"build": {
-		"dockerfile": "Dockerfile",
-		"args": {
-			// Update the VARIANT arg to pick a Java version: 11, 16
-			"VARIANT": "16",
-			// Options
-			"INSTALL_MAVEN": "false",
-			"INSTALL_GRADLE": "true",
-			"NODE_VERSION": "16"
-		}
-	},
+
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "vscode",
+	"workspaceFolder": "/workspaces/to2-server",
 
 	// Set *default* container specific settings.json values on container create.
 	"settings": { 

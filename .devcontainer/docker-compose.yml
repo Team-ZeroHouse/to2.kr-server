@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  vscode: 
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VARIANT: "16"
+        INSTALL_MAVEN: "false"
+        INSTALL_GRADLE: "true"
+        NODE_VERSION: "16"
+    volumes:
+      - ../:/workspaces/to2-server
+    environment:
+      TZ: Asia/Seoul
+    command: sleep infinity
+  db:
+    image: mariadb:10.6
+    environment:
+      TZ: Asia/Seoul
+      MARIADB_RANDOM_ROOT_PASSWORD: 'yes'
+      MARIADB_DATABASE: 'to2'
+      MARIADB_USER: 'to2'
+      MARIADB_PASSWORD: 'to2'
+        
