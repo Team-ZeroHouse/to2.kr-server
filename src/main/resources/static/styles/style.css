@@ -69,8 +69,25 @@ main {
 }
 
 #figure {
+  position: relative;
+  width: 161px;
+  height: 167px;
   margin-top: 5rem;
   margin-bottom: 3rem;
+}
+#figure img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#figure.animate img {
+  transition: opacity 1s ease;
+}
+#figure:not(.done) img[alt=after] {
+  opacity: 0;
+}
+#figure.done img[alt=before] {
+  opacity: 0;
 }
 
 #warning-text {

@@ -11,6 +11,30 @@
   function validUrl(url) {
     return !!VALID_URL_REGEX.test(url);
   }
+
+  function Figure() {
+    var animateTimeoutId = null;
+    var $figure = document.querySelector('#figure');
+
+    return {
+      done: function(value) {
+        if (animateTimeoutId) {
+          clearTimeout(animateTimeoutId);
+          animateTimeoutId = null;
+        }
+        $figure.classList.add('animate');
+        animateTimeoutId = setTimeout(function() {
+          $figure.classList.remove('animate');
+          animateTimeoutId = null;
+        }, 1000);
+        if (value) {
+          $figure.classList.add('done');
+        } else {
+          $figure.classList.remove('done');
+        }
+      }
+    }
+  }
   
   function Input() {
     var status = 'none'; // 'none' | 'correct' | 'wrong'
@@ -49,6 +73,7 @@
     function showMessage(msg) {
       if (messageTimeoutId) {
         clearTimeout(messageTimeoutId);
+        messageTimeoutId = null;
       }
       $message.style.display = 'none';
       $message.style.display = '';
@@ -94,6 +119,7 @@
     function handleCopy() {
       if (copyTimeoutId) {
         clearTimeout(copyTimeoutId);
+        copyTimeoutId = null;
       }
       $clipboard.setAttribute('class', 'copy');
       input.message('복사가 완료되었습니다');
@@ -121,7 +147,7 @@
     };
   }
 
-  function Form(input, result) {
+  function Form(input, result, figure) {
     var processing = false;
     var $form = document.querySelector('#form');
 
@@ -134,10 +160,12 @@
       if (input.status() === 'correct') {
         processing = true;
         input.process(true);
+        figure.done(false);
         result.hide();
         setTimeout(function() {
           processing = false;
           input.process(false);
+          figure.done(true);
           input.message('주소가 성공적으로 줄여졌습니다 복사해서 사용하세요 :)');
           result.url('https://to2.kr/abc');
         }, 1000);
@@ -148,9 +176,10 @@
   }
 
   function handleDocumentLoad() {
+    var figure = Figure();
     var input = Input();
     var result = Result(input);
-    Form(input, result);
+    Form(input, result, figure);
   }
 
   window.addEventListener('load', handleDocumentLoad);
