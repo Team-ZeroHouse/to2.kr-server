@@ -15,12 +15,13 @@ services:
     environment:
       TZ: Asia/Seoul
     command: sleep infinity
+    network_mode: service:db
   db:
     image: mariadb:10.6
     environment:
       TZ: Asia/Seoul
       MARIADB_RANDOM_ROOT_PASSWORD: 'yes'
-      MARIADB_DATABASE: 'to2'
-      MARIADB_USER: 'to2'
-      MARIADB_PASSWORD: 'to2'
+      MARIADB_DATABASE: to2
+      MARIADB_USER: to2
+      MARIADB_PASSWORD: to2
         
