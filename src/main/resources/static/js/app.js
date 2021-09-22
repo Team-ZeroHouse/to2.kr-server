@@ -95,11 +95,15 @@
       if (copyTimeoutId) {
         clearTimeout(copyTimeoutId);
       }
-      $clipboard.classList.add('copy');
+      $clipboard.setAttribute('class', 'copy');
       input.message('복사가 완료되었습니다');
-      navigator.clipboard.writeText($url.textContent);
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText($url.textContent);
+      } else {
+        window.clipboardData.setData("Text", $url.textContent);
+      }
       copyTimeoutId = setTimeout(function() {
-        $clipboard.classList.remove('copy');
+        $clipboard.setAttribute('class', '');
         copyTimeoutId = null;
       }, 2000)
     }
