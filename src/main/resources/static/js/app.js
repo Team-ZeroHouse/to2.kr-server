@@ -8,6 +8,12 @@
     '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
     '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
 
+  Number.isInteger = Number.isInteger || function(value) {
+    return typeof value === 'number' &&
+      isFinite(value) &&
+      Math.floor(value) === value;
+  };
+
   function validUrl(url) {
     return !!VALID_URL_REGEX.test(url);
   }
@@ -70,7 +76,7 @@
       }
     }
 
-    function showMessage(msg) {
+    function showMessage(msg, type, time) {
       if (messageTimeoutId) {
         clearTimeout(messageTimeoutId);
         messageTimeoutId = null;
@@ -78,11 +84,18 @@
       $message.style.display = 'none';
       $message.style.display = '';
       $message.textContent = msg;
-      $message.classList.add('show');
+      if (type !== 'success' && type !== 'error') {
+        type = 'success';
+      }
+      $message.classList.remove('success', 'error');
+      $message.classList.add('show', type);
+      if (!Number.isInteger(time)) {
+        time = 3000;
+      }
       messageTimeoutId = setTimeout(function() {
         messageTimeoutId = null;
         $message.classList.remove('show');
-      }, 3000);
+      }, time);
     }
 
     $input.addEventListener('input', handleInput);
@@ -165,9 +178,14 @@
         setTimeout(function() {
           processing = false;
           input.process(false);
-          figure.done(true);
-          input.message('주소가 성공적으로 줄여졌습니다 복사해서 사용하세요 :)');
-          result.url('https://to2.kr/abc');
+          // 더미 테스트
+          if (Math.random() > 0.5) {
+            input.message('주소가 성공적으로 줄여졌습니다 복사해서 사용하세요 :)');
+            result.url('https://to2.kr/abc');
+            figure.done(true);
+          } else {
+            input.message('에러가 발생했습니다.', 'error')
+          }
         }, 1000);
       }
     }

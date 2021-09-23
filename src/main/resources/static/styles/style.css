@@ -180,6 +180,9 @@ main {
 #message.show {
   top: 0;
 }
+#message.error {
+  color: #FF0000;
+}
 
 #result {
   position: relative;
