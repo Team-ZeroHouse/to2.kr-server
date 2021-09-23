@@ -17,7 +17,9 @@
 	"extensions": [
 		"editorconfig.editorconfig",
 		"vscjava.vscode-java-pack",
-		"gabrielbb.vscode-lombok"
+		"gabrielbb.vscode-lombok",
+    "pivotal.vscode-spring-boot",
+    "vscjava.vscode-spring-boot-dashboard"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
