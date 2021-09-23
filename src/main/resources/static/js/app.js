@@ -163,6 +163,35 @@
   function Form(input, result, figure) {
     var processing = false;
     var $form = document.querySelector('#form');
+    var $recapchaInput = $form.querySelector('input[name=recaptcha]');
+    var $script = document.querySelector('#recaptcha');
+    var recaptchaKey = null;
+
+    if ($script) {
+      recaptchaKey = $script.src.match(/\?render=(.+)$/)[1];
+    }
+
+    function beforeSend() {
+      processing = true;
+      if ($recapchaInput) {
+        $recapchaInput.value = '';
+      }
+      input.process(true);
+      figure.done(false);
+      result.hide();
+    }
+
+    function afterReceive(url, message, error) {
+      processing = false;
+      input.process(false);
+      if (error) {
+        input.message(message, 'error')
+      } else {
+        input.message(message);
+        result.url(url);
+        figure.done(true);
+      }
+    }
 
     function handleSubmit(e) {
       e.preventDefault();
@@ -171,22 +200,44 @@
       }
 
       if (input.status() === 'correct') {
-        processing = true;
-        input.process(true);
-        figure.done(false);
-        result.hide();
-        setTimeout(function() {
-          processing = false;
-          input.process(false);
-          // 더미 테스트
-          if (Math.random() > 0.5) {
-            input.message('주소가 성공적으로 줄여졌습니다 복사해서 사용하세요 :)');
-            result.url('https://to2.kr/abc');
-            figure.done(true);
+        beforeSend();
+        // grecaptcha로 Promise의 polyfill이 돼서 별도의 처리를 하지 않아도 된다.
+        new Promise(function(resolve) {
+          if (recaptchaKey) {
+            grecaptcha.ready(function() {
+              grecaptcha.execute(recaptchaKey, { action: 'submit' }).then(function(token) {
+                $recapchaInput.value = token;
+                resolve();
+              });
+            });
           } else {
-            input.message('에러가 발생했습니다.', 'error')
+            resolve();
           }
-        }, 1000);
+        }).catch(function() {
+          afterReceive(null, '로봇인증에 오류가 발생했습니다.', true);
+        }).then(function() {
+          return new Promise(function(resolve, reject) {
+            var formData = new FormData($form);
+            // ajax mock
+            setTimeout(function() {
+              if (Math.random() > 0.2) {
+                resolve('https://to2.kr/abc');
+              } else {
+                reject({ type: 'to2.kr-error', message: '에러 발생' });
+              }
+            }, 1000);
+          });
+        }).then(function(url) {
+          afterReceive(url, '주소가 성공적으로 줄여졌습니다 복사해서 사용하세요 :)');
+        }).catch(function(e) {
+          if (e.type === 'to2.kr-error') {
+            afterReceive(null, e.message, true);
+          } else {
+            throw e;
+          }
+        }).catch(function() {
+          afterReceive(null, '알 수 없는 에러가 발생했습니다.', true);
+        });
       }
     }
 
