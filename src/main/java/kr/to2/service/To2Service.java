@@ -1,6 +1,6 @@
 package kr.to2.service;
 
-// for 'Service Sub'
+// for 'Service Stub'
 public interface To2Service {
 
   static final String CODE_REGEX = "[abcdefghjkmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789]{3,}";
