@@ -8,6 +8,7 @@
     '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
     '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
 
+  // polyfill
   Number.isInteger = Number.isInteger || function(value) {
     return typeof value === 'number' &&
       isFinite(value) &&
@@ -52,7 +53,8 @@
     function handleInput() {
       var url = $input.value;
       if (url.length === 0) {
-        $box.classList.remove('correct', 'wrong');
+        $box.classList.remove('correct');
+        $box.classList.remove('wrong');
         status = 'none';
         return;
       }
@@ -87,8 +89,10 @@
       if (type !== 'success' && type !== 'error') {
         type = 'success';
       }
-      $message.classList.remove('success', 'error');
+      $message.classList.remove('success');
+      $message.classList.remove('error');
       $message.classList.add('show', type);
+      $message.classList.add(type);
       if (!Number.isInteger(time)) {
         time = 3000;
       }
@@ -164,6 +168,7 @@
     var processing = false;
     var $form = document.querySelector('#form');
     var $recapchaInput = $form.querySelector('input[name=recaptcha]');
+    var $urlInput = $form.querySelector('input[name=url]');
     var $script = document.querySelector('#recaptcha');
     var recaptchaKey = null;
 
@@ -193,6 +198,15 @@
       }
     }
 
+    function getData() {
+      var data = {};
+      data.url = $urlInput.value.trim();
+      if (recaptchaKey) {
+        data.recaptcha = $recapchaInput.value;
+      }
+      return data;
+    }
+
     function handleSubmit(e) {
       e.preventDefault();
       if (processing) {
@@ -217,15 +231,22 @@
           afterReceive(null, '로봇인증에 오류가 발생했습니다.', true);
         }).then(function() {
           return new Promise(function(resolve, reject) {
-            var formData = new FormData($form);
-            // ajax mock
-            setTimeout(function() {
-              if (Math.random() > 0.2) {
-                resolve('https://to2.kr/abc');
-              } else {
-                reject({ type: 'to2.kr-error', message: '에러 발생' });
+            var data = getData();
+            axios.post('/shorten', data).then(function(res) {
+              var shortenUrl = res.data.shortenUrl;
+              resolve(shortenUrl);
+            }, function(e) {
+              var res = e.response;
+              if (res.data.error) {
+                if (res.data.code = 'RECAPTCHA_INVALID') {
+                  return reject({ type: 'to2.kr-error', message: '사용자 로봇 검증에 에러가 발생했습니다.' });
+                }
               }
-            }, 1000);
+              
+              return reject(e);
+            }).catch(function(e) {
+              reject(e);
+            });
           });
         }).then(function(url) {
           afterReceive(url, '주소가 성공적으로 줄여졌습니다 복사해서 사용하세요 :)');
@@ -235,8 +256,9 @@
           } else {
             throw e;
           }
-        }).catch(function() {
+        }).catch(function(e) {
           afterReceive(null, '알 수 없는 에러가 발생했습니다.', true);
+          console.error('처리 불가한 에러', e);
         });
       }
     }

@@ -1,8 +1,12 @@
-# to2.kr
+# [to2.kr](https://to2.kr)
 
 주소를 짧게 줄여주는 서비스
 
-## External Application Configuration
+**기존 PHP로 만들어진 서비스를 Java Spring으로 마이그레이션 중**
+
+## 설정
+
+### External Application Configuration
 
 소스코드 내부에 민감정보를 포함시키지 않기 위해서 [features.external-config.files.wildcard-locations](https://docs.spring.io/spring-boot/docs/2.5.x/reference/html/features.html#features.external-config.files.wildcard-locations) 기능을 사용하여 설정을 관리합니다.
 
