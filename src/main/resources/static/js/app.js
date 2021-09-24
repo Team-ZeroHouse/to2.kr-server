@@ -52,7 +52,8 @@
     function handleInput() {
       var url = $input.value;
       if (url.length === 0) {
-        $box.classList.remove('correct', 'wrong');
+        $box.classList.remove('correct');
+        $box.classList.remove('wrong');
         status = 'none';
         return;
       }
@@ -87,8 +88,10 @@
       if (type !== 'success' && type !== 'error') {
         type = 'success';
       }
-      $message.classList.remove('success', 'error');
+      $message.classList.remove('success');
+      $message.classList.remove('error');
       $message.classList.add('show', type);
+      $message.classList.add(type);
       if (!Number.isInteger(time)) {
         time = 3000;
       }
