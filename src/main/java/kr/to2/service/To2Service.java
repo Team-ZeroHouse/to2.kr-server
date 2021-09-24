@@ -3,6 +3,8 @@ package kr.to2.service;
 // for 'Service Sub'
 public interface To2Service {
 
+  static final String CODE_REGEX = "[abcdefghjkmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789]{3,}";
+
   static final char[] CODES = new char[] {
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'm', 'n',
     'o','p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
