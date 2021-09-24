@@ -41,7 +41,7 @@ public class To2Controller {
   @ResponseBody
   @GetMapping("/{code:" + To2Service.CODE_REGEX + "}")
   public RedirectView code(@PathVariable String code) {
-    final String url = this.to2Service.findUrlFromCode(code);
+    final String url = this.to2Service.findUrlByCode(code);
 
     final RedirectView redirectView = new RedirectView(url);
     redirectView.setStatusCode(HttpStatus.MOVED_PERMANENTLY);

@@ -12,7 +12,7 @@ public class To2ServiceImpl implements To2Service {
   }
 
   @Override
-  public String findUrlFromCode(String code) {
+  public String findUrlByCode(String code) {
     // TODO: 실제 Model 처리 로직으로 변경
     return "https://github.com/Team-ZeroHouse/to2.kr-server";
   }

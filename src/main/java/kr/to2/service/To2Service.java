@@ -15,6 +15,6 @@ public interface To2Service {
 
   String shorten(String url);
 
-  String findUrlFromCode(String code);
+  String findUrlByCode(String code);
 
 }
