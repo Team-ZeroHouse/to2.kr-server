@@ -79,6 +79,7 @@ main {
   position: absolute;
   top: 0;
   left: 0;
+  flex-shrink: 0;
 }
 #figure.animate img {
   transition: opacity 1s ease;
@@ -171,6 +172,7 @@ main {
   align-items: center;
   width: 100%;
   height: 100%;
+  padding: 0.5rem;
   background-color: #ffffff;
   color: #FF8600;
   cursor: pointer;

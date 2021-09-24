@@ -35,7 +35,7 @@
         <p id="message"></p>
       </div>
       
-      <input type="hidden" name="recaptcha" />
+      <input th:if="${@recaptchaProperties.isActive()}" type="hidden" name="recaptcha" />
 
       <div id="result">
         <span id="shorten-url"></span>
@@ -54,14 +54,16 @@
         </svg>
       </div>
 
-      <p id="recaptcha-description">
+      <p th:if="${@recaptchaProperties.isActive()}" id="recaptcha-description">
         This site is protected by reCAPTCHA and the Google
         <a href="https://policies.google.com/privacy">Privacy Policy</a> and
         <a href="https://policies.google.com/terms">Terms of Service</a> apply.
       </p>
     </form>
 
-    <!-- <script src="https://www.google.com/recaptcha/api.js?render="></script> -->
+    <script id="recaptcha"
+      th:if="${@recaptchaProperties.isActive()}"
+      th:src="|https://www.google.com/recaptcha/api.js?render=${@recaptchaProperties.getSiteKey()}|"></script>
     <script th:src="@{/js/app.js}"></script>
   </main>
 </body>

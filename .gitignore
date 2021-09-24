@@ -11,3 +11,6 @@ bin/
 .settings
 .classpath
 .project
+
+# external application configuration
+/config
