@@ -13,7 +13,8 @@ https://cloud.google.com/apis/design/errors#handling_errors
 public enum ApiResponseType {
 
   OK(HttpStatus.OK),
-  INVALID_ARGUMENT(HttpStatus.BAD_REQUEST);
+  INVALID_ARGUMENT(HttpStatus.BAD_REQUEST),
+  NOT_FOUND(HttpStatus.NOT_FOUND);
 
   @Getter
   private final HttpStatus status;

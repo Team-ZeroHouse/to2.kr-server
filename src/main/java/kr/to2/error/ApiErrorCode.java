@@ -7,7 +7,9 @@ import lombok.Getter;
 public enum ApiErrorCode {
 
   // TODO: 추후 DDD로 변경시 모두 분리 관리
-  RECAPTCHA_INVALID(ApiResponseType.INVALID_ARGUMENT);
+  RECAPTCHA_INVALID(ApiResponseType.INVALID_ARGUMENT),
+  CODE_NOT_FOUND(ApiResponseType.NOT_FOUND),
+  URL_INVALID(ApiResponseType.INVALID_ARGUMENT);
 
   @Getter
   private final ApiResponseType type;
