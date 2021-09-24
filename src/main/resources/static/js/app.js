@@ -238,7 +238,7 @@
             }, function(e) {
               var res = e.response;
               if (res.data.error) {
-                if (res.data.code = 'RECAPTCHA_INVALID') {
+                if (res.data.code === 'RECAPTCHA_INVALID') {
                   return reject({ type: 'to2.kr-error', message: '사용자 로봇 검증에 에러가 발생했습니다.' });
                 }
               }
