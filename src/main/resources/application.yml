@@ -10,6 +10,9 @@ spring:
         jdbc:
           time_zone: UTC
 
+site:
+  protocol-and-host: #
+    
 recaptcha:
   siteKey: #
   privateKey: #
