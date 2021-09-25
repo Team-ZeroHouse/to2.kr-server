@@ -4,7 +4,7 @@
   var VALID_URL_REGEX = new RegExp('^https?:\\/\\/'+ // protocol
     '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
     '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+    '(\\:\\d+)?(\\/[-a-z\\d%_.~+@]*)*'+ // port and path
     '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
     '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
 
@@ -238,7 +238,7 @@
             }, function(e) {
               var res = e.response;
               if (res.data.error) {
-                if (res.data.code = 'RECAPTCHA_INVALID') {
+                if (res.data.code === 'RECAPTCHA_INVALID') {
                   return reject({ type: 'to2.kr-error', message: '사용자 로봇 검증에 에러가 발생했습니다.' });
                 }
               }

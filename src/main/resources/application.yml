@@ -4,7 +4,15 @@ spring:
     url: jdbc:mariadb://db:3306/to2
     username: to2
     password: to2
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
 
+site:
+  protocol-and-host: #
+    
 recaptcha:
   siteKey: #
   privateKey: #
