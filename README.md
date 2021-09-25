@@ -16,7 +16,7 @@
 
 `config/<config-name>/application.yml`의 `<config-name>`에 해당하는 설정이 `src/main/resources/application.yml`에 샘플로 빈값 또는 기본값이 설정돼 있습니다. 이에 맞게 파일을 작성하면 됩니다.
 
-## 디지인
+## 디자인
 
 본 프로젝트의 디자인은 [nalong](https://nalong.studio)이 하였습니다.
 
