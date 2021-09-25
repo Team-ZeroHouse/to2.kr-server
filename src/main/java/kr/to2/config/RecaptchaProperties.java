@@ -19,7 +19,7 @@ public class RecaptchaProperties {
   @PostConstruct
   private void postConstruct() {
     if (this.active) {
-      if (Strings.isEmptyString(this.siteKey) || Strings.isEmptyString(this.privateKey)) {
+      if (Strings.isEmpty(this.siteKey) || Strings.isEmpty(this.privateKey)) {
         throw new RuntimeException("recaptcha.siteKey 또는 recaptcha.privateKey가 필요합니다.");
       }
     }
