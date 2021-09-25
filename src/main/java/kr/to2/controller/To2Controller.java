@@ -34,14 +34,14 @@ public class To2Controller {
   @PostMapping("/shorten")
   public ShortenResponse shorten(@Valid @RequestBody ShortenRequest shortenRequest) {
     this.recaptchaService.verify(shortenRequest.getRecaptcha());
-    final String shorenUrl = this.to2Service.shorten(shortenRequest.getUrl());
-    return ShortenResponse.builder().shortenUrl(shorenUrl).build();
+    final String shortenUrl = this.to2Service.shorten(shortenRequest.getUrl());
+    return ShortenResponse.builder().shortenUrl(shortenUrl).build();
   }
 
   @ResponseBody
   @GetMapping("/{code:" + To2Service.CODE_REGEX + "}")
   public RedirectView code(@PathVariable String code) {
-    final String url = this.to2Service.findUrlFromCode(code);
+    final String url = this.to2Service.findUrlByCode(code);
 
     final RedirectView redirectView = new RedirectView(url);
     redirectView.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
