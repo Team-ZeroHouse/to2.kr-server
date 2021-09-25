@@ -17,14 +17,13 @@ import kr.to2.service.RecaptchaService;
 import kr.to2.service.To2Service;
 import lombok.AllArgsConstructor;
 
-
 @AllArgsConstructor
 @Controller("/")
 public class To2Controller {
 
   private To2Service to2Service;
   private RecaptchaService recaptchaService;
-  
+
   @GetMapping()
   public String index() {
     return "index";
@@ -34,8 +33,10 @@ public class To2Controller {
   @PostMapping("/shorten")
   public ShortenResponse shorten(@Valid @RequestBody ShortenRequest shortenRequest) {
     this.recaptchaService.verify(shortenRequest.getRecaptcha());
-    final String shortenUrl = this.to2Service.shorten(shortenRequest.getUrl());
-    return ShortenResponse.builder().shortenUrl(shortenUrl).build();
+    
+    final String shorenUrl = this.to2Service.shorten(shortenRequest.getUrl());
+
+    return ShortenResponse.builder().shortenUrl(shorenUrl).build();
   }
 
   @ResponseBody
@@ -47,5 +48,5 @@ public class To2Controller {
     redirectView.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
     return redirectView;
   }
-  
+
 }
