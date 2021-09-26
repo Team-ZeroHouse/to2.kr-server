@@ -7,7 +7,7 @@
   <title>TO2 : 주소를 줄여드립니다</title>
 
   <link rel="stylesheet" th:href="@{/styles/reset.css}">
-  <link rel="stylesheet" th:href="@{/styles/style.css}">
+  <link rel="stylesheet" th:href="@{/styles/index.css}">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,7 +65,7 @@
       th:if="${@recaptchaProperties.isActive()}"
       th:src="|https://www.google.com/recaptcha/api.js?render=${@recaptchaProperties.getSiteKey()}|"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script th:src="@{/js/app.js}"></script>
+    <script th:src="@{/js/index.js}"></script>
   </main>
 </body>
 </html>
