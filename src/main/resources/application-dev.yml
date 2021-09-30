@@ -14,5 +14,7 @@ spring:
     hibernate:
       ddl-auto: update
 
+debug: true
+
 site:
   protocol-and-host: http://localhost:8080
