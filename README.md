@@ -2,7 +2,11 @@
 
 주소를 짧게 줄여주는 서비스
 
-**기존 PHP로 만들어진 서비스를 Java Spring으로 마이그레이션 중**
+**기존 [PHP](https://github.com/Team-ZeroHouse/to2.kr-php-legacy)로 만들어진 서비스를 [Java Spring](https://github.com/Team-ZeroHouse/to2.kr-server)으로 마이그레이션 중**
+
+<p align="center">
+  <img src=".github/preview.gif" alt="preview" width="500" />
+</p>
 
 ## 설정
 

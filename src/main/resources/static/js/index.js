@@ -232,7 +232,7 @@
         }).then(function() {
           return new Promise(function(resolve, reject) {
             var data = getData();
-            axios.post('/shorten', data).then(function(res) {
+            axios.post('/api/shorten', data).then(function(res) {
               var shortenUrl = res.data.shortenUrl;
               resolve(shortenUrl);
             }, function(e) {
