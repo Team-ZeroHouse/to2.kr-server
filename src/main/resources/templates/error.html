@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
-  <th:block th:replace="~{fragments/meta :: meta(~{::title})}"></th:block>
+  <th:block th:replace="~{fragments/meta :: meta(~{::title}, |${@siteProperties.getProtocolAndHost()}${path}|)}"></th:block>
 
   <title>(에러 <th:block th:text="${status}" />) TO2 : 주소를 줄여드립니다</title>
   

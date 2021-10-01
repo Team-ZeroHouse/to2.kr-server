@@ -2,10 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ko">
 
 <head>
-  <th:block th:fragment="meta(title)">
+  <th:block th:fragment="meta(title, url)">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="TO2" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" th:content="${url}" />
+    <meta property="og:image" th:content="|${@siteProperties.getProtocolAndHost()}/images/to2.png|" />
 
     <title th:replace="${title}">TO2 : 주소를 줄여드립니다</title>
 
