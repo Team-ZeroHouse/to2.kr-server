@@ -1,21 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <th:block th:replace="~{fragments/meta :: meta(~{::title})}"></th:block>
+
   <title>TO2 : 주소를 줄여드립니다</title>
-
-  <link rel="stylesheet" th:href="@{/styles/reset.css}">
-  <link rel="stylesheet" th:href="@{/styles/common.css}" />
+  
   <link rel="stylesheet" th:href="@{/styles/index.css}">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
-
-  <th:block th:if="${@googleAnalytics.isActive()}"
-    th:replace="~{fragments/google :: analytics(${@googleAnalytics.getMeasurementId()})}" />
 </head>
 <body>
   <main>
