@@ -12,16 +12,23 @@ import lombok.Data;
 @Configuration
 @ConfigurationProperties("recaptcha")
 public class RecaptchaProperties {
+
   private String siteKey;
+
   private String privateKey;
+
   private boolean active;
 
   @PostConstruct
   private void postConstruct() {
     if (this.active) {
-      if (Strings.isEmpty(this.siteKey) || Strings.isEmpty(this.privateKey)) {
-        throw new RuntimeException("recaptcha.siteKey 또는 recaptcha.privateKey가 필요합니다.");
+      if (Strings.isEmpty(this.siteKey)) {
+        throw new RuntimeException("recaptcha.siteKey가 필요합니다.");
+      }
+      if (Strings.isEmpty(this.privateKey)) {
+        throw new RuntimeException("recaptcha.privateKey가 필요합니다.");
       }
     }
   }
+
 }
