@@ -33,6 +33,10 @@ public class To2ErrorController extends BasicErrorController {
     final WebRequest webRequest = new ServletWebRequest(request);
     final Throwable error = this.errorAttributes.getError(webRequest);
 
+    if (error == null) {
+      return super.getStatus(request);
+    }
+
     if (error instanceof ApiException) {
       final ApiException apiException = (ApiException) error;
       return apiException.getCode().getStatus();

@@ -29,12 +29,14 @@ public class To2ErrorAttributes extends DefaultErrorAttributes {
       errorAttributes.put("code", apiErrorCode);
       errorAttributes.put("message", apiException.getMessage());
       status = apiErrorCode.getStatus();
-    } else {
+    } else if (error != null) {
       errorAttributes.put("message", "서버 내부에서 에러가 발생했습니다.");
     }
 
-    errorAttributes.put("status", status.value());
-    errorAttributes.put("error", status.getReasonPhrase());
+    if (error != null) {
+      errorAttributes.put("status", status.value());
+      errorAttributes.put("error", status.getReasonPhrase());
+    }
 
     return errorAttributes;
 	}

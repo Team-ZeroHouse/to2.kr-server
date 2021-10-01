@@ -13,6 +13,7 @@
     <p id="description">
       <strong><th:block th:text="${status}"></th:block> Error</strong>,
       <th:block th:text="${message}"></th:block>
+      <th:block th:if="${message == null}" th:text=${error}></th:block>
     </p>
     <figure id="question">
       <img src="/images/error.svg" alt="404" />
