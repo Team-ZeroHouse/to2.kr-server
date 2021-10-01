@@ -10,23 +10,18 @@ import lombok.Data;
 
 @Data
 @Configuration
-@ConfigurationProperties("recaptcha")
-public class RecaptchaProperties {
-
-  private String siteKey;
-
-  private String privateKey;
+@ConfigurationProperties("google-analytics")
+public class GoogleAnalytics {
 
   private boolean active;
+
+  private String measurementId;
 
   @PostConstruct
   private void postConstruct() {
     if (this.active) {
-      if (Strings.isEmpty(this.siteKey)) {
-        throw new RuntimeException("recaptcha.siteKey가 필요합니다.");
-      }
-      if (Strings.isEmpty(this.privateKey)) {
-        throw new RuntimeException("recaptcha.privateKey가 필요합니다.");
+      if (Strings.isEmpty(this.measurementId)) {
+        throw new RuntimeException("google-analytics.measurement-id가 필요합니다.");
       }
     }
   }

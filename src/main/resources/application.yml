@@ -20,3 +20,7 @@ recaptcha:
   siteKey: #
   privateKey: #
   active: false
+
+google-analytics:
+  active: false
+  measurement-id: #

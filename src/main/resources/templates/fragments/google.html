@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+
+<head>
+  <th:block th:fragment="analytics(measurementId)">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+      th:src="|https://www.googletagmanager.com/gtag/js?id=${measurementId}|"></script>
+    <script th:inline="javascript">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', /*[[${measurementId}]]*/);
+    </script>
+  </th:block>
+</head>
+
+<body>
+</body>
+
+</html>

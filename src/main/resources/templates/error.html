@@ -9,6 +9,9 @@
   <link rel="stylesheet" th:href="@{/styles/reset.css}">
   <link rel="stylesheet" th:href="@{/styles/common.css}" />
   <link rel="stylesheet" th:href="@{/styles/error.css}">
+
+  <th:block th:if="${@googleAnalytics.isActive()}"
+    th:replace="~{fragments/google :: analytics(${@googleAnalytics.getMeasurementId()})}" />
 </head>
 <body>
   <main>
