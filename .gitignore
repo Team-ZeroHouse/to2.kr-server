@@ -4,7 +4,6 @@
 # Ignore Gradle build output directory
 build
 
-node_modules
 application-prod.yml
 
 # vscode java extension

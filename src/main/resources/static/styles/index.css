@@ -56,6 +56,7 @@ main {
 }
 
 #figure {
+  flex-shrink: 0;
   position: relative;
   width: 161px;
   height: 167px;

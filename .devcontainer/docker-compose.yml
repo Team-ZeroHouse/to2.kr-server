@@ -9,7 +9,7 @@ services:
         VARIANT: "16"
         INSTALL_MAVEN: "false"
         INSTALL_GRADLE: "true"
-        NODE_VERSION: "16"
+        NODE_VERSION: "none"
     volumes:
       - ../:/workspaces/to2-server
     environment:

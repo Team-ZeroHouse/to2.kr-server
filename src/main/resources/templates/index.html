@@ -1,21 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<html xmlns:th="http://www.thymeleaf.org" prefix="og: https://ogp.me/ns#" lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <th:block th:replace="~{fragments/meta :: meta(~{::title}, ${@siteProperties.getProtocolAndHost()})}"></th:block>
+
   <title>TO2 : 주소를 줄여드립니다</title>
+  <meta name="description" content="TO2는 긴 주소를 짧게 줄여주는 서비스입니다.">
 
-  <link rel="stylesheet" th:href="@{/styles/reset.css}">
-  <link rel="stylesheet" th:href="@{/styles/common.css}" />
-  <link rel="stylesheet" th:href="@{/styles/index.css}">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
-
-  <th:block th:if="${@googleAnalytics.isActive()}"
-    th:replace="~{fragments/google :: analytics(${@googleAnalytics.getMeasurementId()})}" />
+  <link rel="stylesheet" href="/styles/index.css">
 </head>
 <body>
   <main>
@@ -23,18 +14,18 @@
     <p id="project-description">이 서비스는 <a href="#" id="zerohouse">ZEROHOUSE</a>에서 <a href="https://github.com/Team-ZeroHouse/to2.kr-server">오픈소스 프로젝트</a>로 진행하였습니다</p>
     
     <figure id="figure">
-      <img th:src="@{/images/before.svg}" alt="before" />
-      <img th:src="@{/images/after.svg}" alt="after" />
+      <img src="/images/before.svg" alt="before" />
+      <img src="/images/after.svg" alt="after" />
     </figure>
     <p id="warning-text">
-      <img th:src="@{/images/warning.svg}" alt="warning" />
+      <img src="/images/warning.svg" alt="warning" />
       반드시 https(s)를 포함한 주소(최대500자)를 입력하세요.
     </p>
     <form id="form" action="#" method="POST">
       <div id="input">
         <input type="text" name="url" placeholder="주소를 입력해주세요" autocomplete="off" maxlength="500" />
         <button type="submit">
-          <img th:src="@{/images/change.svg}" alt="change" />
+          <img src="/images/change.svg" alt="change" />
         </button>
         <p id="message"></p>
       </div>
@@ -69,7 +60,7 @@
       th:if="${@recaptchaProperties.isActive()}"
       th:src="|https://www.google.com/recaptcha/api.js?render=${@recaptchaProperties.getSiteKey()}|"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script th:src="@{/js/index.js}"></script>
+    <script src="/js/index.js"></script>
   </main>
 </body>
 </html>
