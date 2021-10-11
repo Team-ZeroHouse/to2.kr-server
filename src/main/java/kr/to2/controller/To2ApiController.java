@@ -12,7 +12,9 @@ import kr.to2.dto.to2.ShortenResponse;
 import kr.to2.service.RecaptchaService;
 import kr.to2.service.To2Service;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @AllArgsConstructor
 @RestController
 @RequestMapping(path = "/api")
@@ -25,9 +27,12 @@ public class To2ApiController {
   public ShortenResponse shorten(@Valid @RequestBody ShortenRequest shortenRequest) {
     this.recaptchaService.verify(shortenRequest.getRecaptcha());
     
-    final String shorenUrl = this.to2Service.shorten(shortenRequest.getUrl());
+    final String url = shortenRequest.getUrl();
+    log.info("url({}) 줄이기 요청", url);
+    final String shortenUrl = this.to2Service.shorten(url);
+    log.info("url({}) -> code({}) 줄이기 성공", url, shortenUrl);
 
-    return ShortenResponse.builder().shortenUrl(shorenUrl).build();
+    return ShortenResponse.builder().shortenUrl(shortenUrl).build();
   }
 
 }
