@@ -12,8 +12,8 @@ spring:
 
 logging:
   file:
-    name: app.log
-    path: file:logs
+    name: logs/app.log
+    path: logs
 
 error:
   include-message: true
