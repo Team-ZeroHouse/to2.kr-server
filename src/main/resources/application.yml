@@ -10,6 +10,11 @@ spring:
         jdbc:
           time_zone: UTC
 
+logging:
+  file:
+    name: app.log
+    path: file:logs
+
 error:
   include-message: true
 

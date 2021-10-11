@@ -14,3 +14,6 @@ bin/
 
 # external application configuration
 /config
+
+# logging
+/logs

@@ -12,6 +12,9 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.context.request.WebRequest;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Component
 public class To2ErrorAttributes extends DefaultErrorAttributes {
   
@@ -36,6 +39,10 @@ public class To2ErrorAttributes extends DefaultErrorAttributes {
     if (error != null) {
       errorAttributes.put("status", status.value());
       errorAttributes.put("error", status.getReasonPhrase());
+    }
+
+    if (error != null) {
+      log.error("에러 발생({})", status, error);
     }
 
     return errorAttributes;
