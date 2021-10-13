@@ -8,10 +8,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.Import;
 
+import kr.to2.config.JpaAuditingConfiguration;
 import kr.to2.model.UrlCode;
 
 @DataJpaTest
+@Import(JpaAuditingConfiguration.class)
 public class UrlCodeRepositoryTest {
   
   @Autowired
