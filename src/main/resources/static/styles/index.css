@@ -105,7 +105,6 @@ main {
 }
 #input.correct input {
   color: #FF8600;
-  font-weight: 700;
 }
 #input.wrong {
   border: 2px solid #EC4848;
