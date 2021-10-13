@@ -12,18 +12,14 @@
   <main>
     <h1 id="title">
       <img src="/images/title-arrow.svg" alt="title arrow illust">
-      <p>긴 주소를 쉽게 줄이고 <strong>공유해 보세요</strong></p>
+      <p><span>긴 주소를 쉽게 줄이고</span> <strong>공유해 보세요</strong></p>
     </h1>
-    <p id="project-description">이 서비스는 <a href="#" id="zerohouse">ZEROHOUSE</a>에서 <a href="https://github.com/Team-ZeroHouse/to2.kr-server">오픈소스 프로젝트</a>로 진행하였습니다</p>
     
     <figure id="figure">
       <img src="/images/before.svg" alt="before" />
       <img src="/images/after.svg" alt="after" />
     </figure>
-    <p id="warning-text">
-      <img src="/images/warning.svg" alt="warning" />
-      반드시 https(s)를 포함한 주소(최대500자)를 입력하세요.
-    </p>
+    
     <form id="form" action="#" method="POST">
       <div id="input">
         <input type="text" name="url" placeholder="주소를 입력해주세요" autocomplete="off" maxlength="500" />
@@ -32,12 +28,12 @@
         </button>
         <p id="message"></p>
       </div>
-      
+
       <input th:if="${@recaptchaProperties.isActive()}" type="hidden" name="recaptcha" />
 
       <div id="result">
         <span id="shorten-url"></span>
-        <svg id="clipboard" width="38" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg id="clipboard" width="38" height="36" viewBox="0 0 38 36" fill="none" xmlns="http://www.w3.org/2000/svg">
           <ellipse cx="19" cy="18" rx="18.0844" ry="17.904" fill="#FFE8CE"></ellipse>
           <g clip-path="url(#a)" stroke="#FF8600" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M26.3466 10.4921H11.6528v17.311h14.6938v-17.311Z" fill="#fff"></path>
@@ -52,16 +48,23 @@
         </svg>
       </div>
 
-      <p th:if="${@recaptchaProperties.isActive()}" id="recaptcha-description">
+      <p id="warning-text">
+        <img src="/images/warning.svg" alt="warning" />
+        반드시 http(s)를 포함한 주소(최대500자)를 입력하세요.
+      </p>
+    </form>
+
+    <div id="description">
+      <p th:if="${@recaptchaProperties.isActive()}">
         This site is protected by reCAPTCHA and the Google
         <a href="https://policies.google.com/privacy">Privacy Policy</a> and
         <a href="https://policies.google.com/terms">Terms of Service</a> apply.
       </p>
-      <p id="project-description">
-        이 서비스는 <a href="#" id="zerohouse">ZEROHOUSE</a>에서 
-        <a href="https://github.com/Team-ZeroHouse/to2.kr-server" target="_blank">오픈소스 프로젝트</a>로 진행하였습니다
+      <p>
+        이 서비스는 <a href="#" id="zerohouse">ZEROHOUSE</a>에서
+        <a href="https://github.com/Team-ZeroHouse/to2.kr-server">오픈소스</a> 프로젝트 로 진행하였습니다
       </p>
-    </form>
+    </div>
 
     <script id="recaptcha"
       th:if="${@recaptchaProperties.isActive()}"

@@ -48,31 +48,12 @@ main {
   right: 3rem;
 }
 
-#project-description {
-  color: #606060;
-  font-size: 0.8rem;
-  line-height: 1.5;
-}
-#project-description a {
-  position: relative;
-  font-weight: 700;
-}
-#project-description a::after {
-  position: absolute;
-  left: 0;
-  bottom: -1px;
-  display: block;
-  content: '';
-  width: 100%;
-  border-bottom: 1px solid #606060;
-}
-
 #figure {
   flex-shrink: 0;
   position: relative;
   width: 161px;
   height: 167px;
-  margin-top: 5rem;
+  margin-top: 3rem;
   margin-bottom: 3rem;
 }
 #figure img {
@@ -95,17 +76,20 @@ main {
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-weight: 300;
 
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+
+  font-weight: 300;
   color: #606060;
 }
 #warning-text img {
+  margin-left: 0.2rem;
   margin-right: 0.5rem;
 }
 
 #form {
   width: 100%;
-  margin-top: 1rem;
 }
 
 #input {
@@ -142,11 +126,14 @@ main {
   color: rgba(96, 96, 96, 0.5);
 }
 
+#input img {
+  height: 2rem;
+}
 #input button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 0.5rem;
+  right: 1rem;
   padding: 0;
   border: none;
   background: transparent;
@@ -203,6 +190,7 @@ main {
 #result:not(.show) {
   display: none;
 }
+
 #shorten-url {
   color: #ffffff;
 }
@@ -211,20 +199,26 @@ main {
   top: 50%;
   right: 1rem;
   transform: translateY(-50%);
+  height: 2rem;
   cursor: pointer;
 }
 #clipboard:not(.copy) .check {
   display: none;
 }
 
-#recaptcha-description, #project-description {
-  margin-top: 0.6rem;
-  padding-left: 0.15rem;
+#description {
+  width: 100%;
+}
+#description p {
+  margin-bottom: 0.5rem;
 
   color: #A4A4A4;
   font-size: 0.65rem;
 }
-#recaptcha-description a {
+#description p:last-child {
+  margin-bottom: unset;
+}
+#description a {
   color: #FF8600;
 }
 
