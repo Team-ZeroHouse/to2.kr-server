@@ -29,15 +29,26 @@ main {
 }
 
 strong {
-  font-weight: 700;
+  font-weight: 500;
 }
 
 #title {
+  position: relative;
+
+  margin-top: 2.3rem;
   margin-bottom: 0.8rem;
 
   color: #FF8600;
-  font-weight: 700;
-  font-size: 2rem;
+  font-weight: 300;
+  font-size: 1.9rem;
+}
+#title strong {
+  font-weight: 500;
+}
+#title img {
+  position: absolute;
+  top: -2.3rem;
+  right: 2rem;
 }
 
 #project-description {
