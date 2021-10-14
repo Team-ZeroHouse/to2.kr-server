@@ -5,6 +5,7 @@ spring:
     username: to2
     password: to2
   jpa:
+    open-in-view: false
     properties:
       hibernate:
         jdbc:
