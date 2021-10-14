@@ -42,6 +42,21 @@
       }
     }
   }
+
+  function Title() {
+    var $title = document.querySelector('#title');
+    var $span = $title.querySelector('span');
+    var TEXT = $span.textContent;
+
+    return {
+      reset: function() {
+        $span.textContent = TEXT;
+      },
+      text: function(text) {
+        $span.textContent = text;
+      }
+    }
+  }
   
   function Input() {
     var status = 'none'; // 'none' | 'correct' | 'wrong'
@@ -139,7 +154,7 @@
         copyTimeoutId = null;
       }
       $clipboard.setAttribute('class', 'copy');
-      input.message('복사가 완료되었습니다');
+      input.message('주소가 복사 되었습니다 :)');
       if (navigator.clipboard) {
         navigator.clipboard.writeText($url.textContent);
       } else {
@@ -164,7 +179,7 @@
     };
   }
 
-  function Form(input, result, figure) {
+  function Form(title, input, result, figure) {
     var processing = false;
     var $form = document.querySelector('#form');
     var $recapchaInput = $form.querySelector('input[name=recaptcha]');
@@ -181,6 +196,7 @@
       if ($recapchaInput) {
         $recapchaInput.value = '';
       }
+      title.reset();
       input.process(true);
       figure.done(false);
       result.hide();
@@ -192,6 +208,7 @@
       if (error) {
         input.message(message, 'error')
       } else {
+        title.text('긴 주소가 쉽게 줄여졌어요');
         input.message(message);
         result.url(url);
         figure.done(true);
@@ -249,7 +266,7 @@
             });
           });
         }).then(function(url) {
-          afterReceive(url, '주소가 성공적으로 줄여졌습니다 복사해서 사용하세요 :)');
+          afterReceive(url, '주소가 성공적으로 줄여졌습니다 :)');
         }).catch(function(e) {
           if (e.type === 'to2.kr-error') {
             afterReceive(null, e.message, true);
@@ -267,10 +284,11 @@
   }
 
   function handleDocumentLoad() {
+    var title = Title();
     var figure = Figure();
     var input = Input();
     var result = Result(input);
-    Form(input, result, figure);
+    Form(title, input, result, figure);
   }
 
   window.addEventListener('load', handleDocumentLoad);
