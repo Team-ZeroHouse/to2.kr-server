@@ -51,10 +51,9 @@ strong {
   right: 2rem;
 }
 
-#project-description {
+#description {
+  font-weight: 300;
   color: #606060;
-  font-size: 0.8rem;
-  line-height: 1.5;
 }
 
 #question {
