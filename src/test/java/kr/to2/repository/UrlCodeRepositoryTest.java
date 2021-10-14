@@ -1,6 +1,7 @@
 package kr.to2.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Optional;
 
@@ -51,6 +52,21 @@ public class UrlCodeRepositoryTest {
     final UrlCode found = urlCodeOp.get();
     
     assertEquals(url, found.getUrl());
+  }
+
+  @Test
+  public void 대소문자_구분_test() {
+    final String url1 = "https://to2.kr";
+    final String code1 = "aaa";
+
+    final String url2 = url1.toUpperCase();
+    final String code2 = code1.toUpperCase();
+
+    final UrlCode urlCode = UrlCode.builder().url(url1).code(code1).build();
+    this.repository.save(urlCode);
+
+    assertTrue(this.repository.findByUrl(url2).isEmpty());
+    assertTrue(this.repository.findByCode(code2).isEmpty());
   }
 
 }
