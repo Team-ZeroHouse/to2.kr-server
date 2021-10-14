@@ -16,9 +16,6 @@ logging:
     name: logs/app.log
     path: logs
 
-error:
-  include-message: true
-
 site:
   protocol-and-host: #
     
