@@ -21,13 +21,11 @@ public interface To2Service {
     if (value <= 0) {
       throw new IllegalArgumentException("value는 반드시 0보다 커야 합니다.");
     }
+    value -= 1;
 
     ArrayList<Integer> indices = new ArrayList<>();
     while (value > 0) {
       int index = (int) (value % CODES.length);
-      if (index > 0) {
-        index--;
-      }
       indices.add(0, index);
       value /= CODES.length;
     }

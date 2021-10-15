@@ -25,4 +25,4 @@ services:
       MARIADB_USER: to2
       MARIADB_PASSWORD: to2
     volumes:
-      - ../src/main/resources/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - ../db/schema-mysql.sql:/docker-entrypoint-initdb.d/schema.sql

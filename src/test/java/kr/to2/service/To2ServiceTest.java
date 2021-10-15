@@ -26,6 +26,12 @@ public class To2ServiceTest {
     this.repository.deleteAll();
   }
 
+  @Test void convertLongToCode_test() {
+    assertEquals("aaa", this.service.convertLongToCode(1));
+    assertEquals("cWB", this.service.convertLongToCode(9702));
+    assertEquals("dcZ", this.service.convertLongToCode(10611));
+  }
+
   @Test
   public void shorten_test() {
     final String url = "https://to2.kr";
