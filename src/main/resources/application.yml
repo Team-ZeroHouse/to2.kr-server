@@ -6,6 +6,8 @@ spring:
     password: to2
   jpa:
     open-in-view: false
+    hibernate:
+      ddl-auto: validate
     properties:
       hibernate:
         jdbc:
@@ -15,9 +17,6 @@ logging:
   file:
     name: logs/app.log
     path: logs
-
-error:
-  include-message: true
 
 site:
   protocol-and-host: #

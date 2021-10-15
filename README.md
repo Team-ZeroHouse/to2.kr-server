@@ -1,8 +1,6 @@
 # [to2.kr](https://to2.kr)
 
-주소를 짧게 줄여주는 서비스
-
-**기존 [PHP](https://github.com/Team-ZeroHouse/to2.kr-php-legacy)로 만들어진 서비스를 [Java Spring](https://github.com/Team-ZeroHouse/to2.kr-server)으로 마이그레이션 중**
+TO2는 긴 주소를 짧게 줄여주는 서비스입니다.
 
 <p align="center">
   <img src=".github/preview.gif" alt="preview" width="500" />
@@ -27,6 +25,10 @@
 - config/google-analytics/application.yml
 
 `config/<config-name>/application.yml`의 `<config-name>`에 해당하는 설정이 `src/main/resources/application.yml`에 샘플로 빈값 또는 기본값이 설정돼 있습니다. 이에 맞게 파일을 작성하면 됩니다.
+
+## 개발환경
+
+본 프로젝트의 개발환경은 `vscode`의 `devcontainer`를 사용합니다.
 
 ## 디자인
 
