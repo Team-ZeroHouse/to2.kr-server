@@ -1,4 +1,4 @@
-CREATE TABLE `url_code` (
+CREATE TABLE `to2`.`url_code` (
 	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
 	`code` VARCHAR(255) NULL DEFAULT NULL,
 	`created_datetime` DATETIME(6) NOT NULL,
