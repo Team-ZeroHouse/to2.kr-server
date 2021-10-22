@@ -6,6 +6,9 @@ plugins {
   id 'io.freefair.lombok' version '6.2.0'
 }
 
+group = 'team.zerohouse'
+sourceCompatibility = '16'
+
 repositories {
   mavenCentral()
 }
@@ -27,4 +30,8 @@ dependencies {
 
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
   testImplementation 'com.h2database:h2'
+}
+
+test {
+  useJUnitPlatform()
 }
